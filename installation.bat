@@ -1,6 +1,6 @@
 @echo off
  > %temp%\~tmp.vbs echo sUrl = "https://download.sysinternals.com/files/PSTools.zip"
->> %temp%\~tmp.vbs echo sFolder = "%USERDATA%\AppData\johnchoi\PSTools\"
+>> %temp%\~tmp.vbs echo sFolder = "c:\temp\unzip"
 >> %temp%\~tmp.vbs (findstr "'--VBS" "%0" | findstr /v "findstr")
 cscript //nologo %temp%\~tmp.vbs
 del /q %temp%\~tmp.vbs
