@@ -152,9 +152,15 @@ namespace GTAPublicInitializer
                     exeProcess.WaitForExit();
                 }
             }
-            catch
+            catch (Exception exception)
             {
                 // Log error.
+                string msgtitle = "Error";
+                string msgmessage = exception.Message;
+                MessageBoxIcon msgicon = MessageBoxIcon.Error;
+                MessageBoxButtons msgbuttons = MessageBoxButtons.OK;
+                MessageBox.Show(msgmessage, msgtitle, msgbuttons, msgicon);
+                return;
             }
             // Display message box
             StatusLabel.Text = "Done";
@@ -219,7 +225,19 @@ namespace GTAPublicInitializer
             webClient = null;
 
             // unzip
-            ZipFile.ExtractToDirectory(ZipPath + "PSTools.zip", ExtractPath);
+            try
+            {
+                ZipFile.ExtractToDirectory(ZipPath + "PSTools.zip", ExtractPath);
+            } 
+            catch
+            {
+                StatusLabel.Text = "Error";
+                string msgTitle = "Error";
+                string msgMessage = "Check internet connection!";
+                MessageBox.Show(msgMessage, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StatusLabel.Text = "Idle";
+                return;
+            }
 
 
             // show confirmation alert box
