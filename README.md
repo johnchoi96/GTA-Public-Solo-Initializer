@@ -1,5 +1,5 @@
 # GTA-Public-Solo-Initializer
-Batch scripts that will trigger GTA 5 to put current player in a separate public server with no one in it.
+Windows Program that will trigger GTA 5 to put current player in a separate public server with no one in it.
 
 ## Instructions
 
@@ -10,3 +10,6 @@ Run the program.
 
 This exe is not signed and therefore expect Microsoft to warn you about the program not being safe to run.
 Ignore this and click on `More info` and click on `run anyway`.
+
+## Requirement
+* Requires .NET 4.7.2
