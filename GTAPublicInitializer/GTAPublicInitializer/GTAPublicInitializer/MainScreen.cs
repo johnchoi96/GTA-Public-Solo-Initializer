@@ -108,6 +108,7 @@ namespace GTAPublicInitializer
         /// <param name="e">event argument</param>
         private void InstallClicked(object sender, EventArgs e)
         {
+            StatusLabel.Text = "Installing....Please Wait...";
             CheckInstallPaths();
             Console.WriteLine(ExtractPath);
 
@@ -121,6 +122,7 @@ namespace GTAPublicInitializer
         /// <param name="e">event argument</param>
         private void RunClicked(object sender, EventArgs e)
         {
+            StatusLabel.Text = "Running...";
             // Use ProcessStartInfo class
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -154,6 +156,14 @@ namespace GTAPublicInitializer
             {
                 // Log error.
             }
+            // Display message box
+            StatusLabel.Text = "Done";
+            string title = "Complete!";
+            string message = "GTA Public Server Initiated, ni[B][B]a plz confirm?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxIcon icon = MessageBoxIcon.Exclamation;
+            MessageBox.Show(message, title, buttons, icon);
+            StatusLabel.Text = "Idle";
         }
 
         /// <summary>
@@ -223,6 +233,7 @@ namespace GTAPublicInitializer
             // if no errors...
             installButton.Enabled = !PSToolExists;
             runButton.Enabled = PSToolExists;
+            StatusLabel.Text = "Idle";
         }
     }
 }
