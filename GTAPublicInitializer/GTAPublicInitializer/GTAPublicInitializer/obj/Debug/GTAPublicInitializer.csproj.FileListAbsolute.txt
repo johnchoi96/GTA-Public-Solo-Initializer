@@ -1,0 +1,10 @@
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\bin\Debug\GTAPublicInitializer.exe.config
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\bin\Debug\GTAPublicInitializer.exe
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\bin\Debug\GTAPublicInitializer.pdb
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.csprojAssemblyReference.cache
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.Properties.Resources.resources
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.csproj.GenerateResource.cache
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.csproj.CoreCompileInputs.cache
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.exe
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.pdb
+C:\Users\chois\Saved Games\GTA Tools\GTA-Public-Solo-Initializer\GTAPublicInitializer\GTAPublicInitializer\GTAPublicInitializer\obj\Debug\GTAPublicInitializer.MainScreen.resources
