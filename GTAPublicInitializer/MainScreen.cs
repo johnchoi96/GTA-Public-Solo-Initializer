@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -113,6 +114,9 @@ namespace GTAPublicInitializer
             Console.WriteLine(ExtractPath);
 
             DownloadPSTool();
+
+            // delete temp file
+            DeleteDirectory(ZipPath);
         }
 
         /// <summary>
@@ -122,6 +126,11 @@ namespace GTAPublicInitializer
         /// <param name="e">event argument</param>
         private void RunClicked(object sender, EventArgs e)
         {
+            // check if confirmed
+            if (!IsConfirmed())
+            {
+                return;
+            }
             StatusLabel.Text = "Running...";
             // Use ProcessStartInfo class
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -168,8 +177,99 @@ namespace GTAPublicInitializer
             string message = "GTA Public Server Initiated, ni[B][B]a plz confirm?";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             MessageBoxIcon icon = MessageBoxIcon.Exclamation;
-            MessageBox.Show(message, title, buttons, icon);
+            DialogResult result = MessageBox.Show(message, title, buttons, icon);
+
+            if (result == DialogResult.No)
+            {
+                title = "b r u h";
+                message = "PlEaSe CoNFiRM?";
+                result = MessageBox.Show(message, title, buttons, icon);
+                if (result == DialogResult.No)
+                {
+                    title = "bravo romeo uniform hotel";
+                    message = "Papa lima echo alpha sierra echo charlie oscar november foxtrot india romeo mike";
+                    MessageBox.Show(message, title, buttons, icon);
+                }
+            }
+            
             StatusLabel.Text = "Idle";
+        }
+
+        private bool IsConfirmed()
+        {
+            if (!ConfirmCheckbox.Checked)
+            {
+                string title = "Can I get some credit?";
+                string message = "You have not confirmed, please confirm";
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return ConfirmCheckbox.Checked;
+        }
+
+        public void UninstallClicked(object sender, EventArgs e)
+        {
+            StatusLabel.Text = "Bruh moment initiated";
+            string title = "Are you sure?";
+            string message = "Are you sure you want to uninstall this?";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            MessageBoxIcon icon = MessageBoxIcon.Warning;
+            DialogResult result = MessageBox.Show(message, title, buttons, icon);
+            if (result == DialogResult.OK)
+            {
+                title = "Seriously?";
+                message = "Do you know how much time I spent on this thing?";
+                buttons = MessageBoxButtons.YesNoCancel;
+                icon = MessageBoxIcon.Exclamation;
+                result = MessageBox.Show(message, title, buttons, icon);
+                if (result != DialogResult.Cancel)
+                {
+                    // Delete extract path
+                    DeleteDirectory(ExtractPath);
+                    // Delete temp path
+                    DeleteDirectory(ZipPath);
+                    // Set up buttons
+                    installButton.Enabled = !PSToolExists;
+                    runButton.Enabled = PSToolExists;
+                    StatusLabel.Text = "Idle";
+                }
+            }
+            StatusLabel.Text = "Idle";
+        }
+
+        private void DeleteDirectory(string path)
+        {
+            try
+            {
+                // first, delete all files in the given directory path
+                IEnumerable<string> iterator = Directory.EnumerateFiles(path);
+                foreach (string filepath in iterator)
+                {
+                    File.Delete(filepath);
+                }
+                // now delete the directory itself
+                Directory.Delete(path);
+            }
+            catch
+            {
+                return;
+            }
+            
+        }
+
+        public void HelpClicked(object sender, EventArgs e)
+        {
+            string title = "Information";
+            string message = "Before you run this, GTA V must be running and you must be in the public server.";
+            message += "\n\nThis application basically kicks yourself out of the current public server and makes a new";
+            message += "public server with only you in it.";
+            message += "\nDeveloped by @johnchoi96 please confirm?";
+
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void CloseClicked(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
 
         /// <summary>
@@ -247,7 +347,6 @@ namespace GTAPublicInitializer
             MessageBoxIcon icon = MessageBoxIcon.Information;
             MessageBox.Show(message, title, buttons, icon);
 
-            // TODO check for any installation errors
             // if no errors...
             installButton.Enabled = !PSToolExists;
             runButton.Enabled = PSToolExists;
