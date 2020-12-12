@@ -131,7 +131,17 @@ namespace GTAPublicInitializer
             {
                 return;
             }
+            // check if GTA is running
+            if (!GTARunning())
+            {
+                string errtitle = "GTA not running!";
+                string errmessage = "GTA should be running and you should be in a online server before you run this.";
+                MessageBox.Show(errmessage, errtitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             StatusLabel.Text = "Running...";
+
             // Use ProcessStartInfo class
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -194,7 +204,21 @@ namespace GTAPublicInitializer
             
             StatusLabel.Text = "Idle";
         }
+        
+        /// <summary>
+        /// Returns true if GTA V is running.
+        /// </summary>
+        /// <returns>True if GTA is running</returns>
+        private bool GTARunning()
+        {
+            Process[] pname = Process.GetProcessesByName("gta5");
+            return pname.Length > 0;
+        }
 
+        /// <summary>
+        /// Check if confirmed box is checked lol.
+        /// </summary>
+        /// <returns>True if checked</returns>
         private bool IsConfirmed()
         {
             if (!ConfirmCheckbox.Checked)
@@ -206,6 +230,12 @@ namespace GTAPublicInitializer
             return ConfirmCheckbox.Checked;
         }
 
+        /// <summary>
+        /// Performs uninstallation of this thing.
+        /// Removes PSTool in AppData both in Local and Temp.
+        /// </summary>
+        /// <param name="sender">event sender</param>
+        /// <param name="e">event arguments</param>
         public void UninstallClicked(object sender, EventArgs e)
         {
             StatusLabel.Text = "Bruh moment initiated";
@@ -236,6 +266,11 @@ namespace GTAPublicInitializer
             StatusLabel.Text = "Idle";
         }
 
+        /// <summary>
+        /// Deletes the directory.
+        /// Removes all the files and deletes the directory
+        /// </summary>
+        /// <param name="path">directory path to delete</param>
         private void DeleteDirectory(string path)
         {
             try
@@ -256,6 +291,11 @@ namespace GTAPublicInitializer
             
         }
 
+        /// <summary>
+        /// Displays help dialog.
+        /// </summary>
+        /// <param name="sender">event sender</param>
+        /// <param name="e">args</param>
         public void HelpClicked(object sender, EventArgs e)
         {
             string title = "Information";
@@ -267,6 +307,11 @@ namespace GTAPublicInitializer
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Exits the application.
+        /// </summary>
+        /// <param name="sender">event sender</param>
+        /// <param name="e">args</param>
         public void CloseClicked(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
